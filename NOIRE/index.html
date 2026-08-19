@@ -177,6 +177,39 @@ select,
     border-radius:12px
 }
 
+/* CATEGORÍAS */
+
+.categoryBar{
+    max-width:1180px;
+    margin:auto;
+    padding:0 22px 15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+
+.categoryBtn{
+    background:#111;
+    color:#aaa;
+    border:1px solid #333;
+    padding:12px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    transition:.2s;
+    font-weight:600
+}
+
+.categoryBtn:hover{
+    border-color:#777;
+    color:white
+}
+
+.categoryBtn.active{
+    background:var(--gold);
+    color:#111;
+    border-color:var(--gold)
+}
+
 /* PRODUCTOS */
 
 main{
@@ -415,6 +448,11 @@ footer{
         padding-right:18px
     }
 
+    .categoryBar{
+        padding-left:18px;
+        padding-right:18px
+    }
+
     main{
         padding-left:18px;
         padding-right:18px
@@ -471,6 +509,29 @@ footer{
 </section>
 
 
+<!-- CATEGORÍAS -->
+
+<div class="categoryBar">
+
+    <button
+        class="categoryBtn active"
+        id="designerBtn"
+        onclick="changeCategory('designer')"
+    >
+        🖤 Perfumes de diseñador
+    </button>
+
+    <button
+        class="categoryBtn"
+        id="arabicBtn"
+        onclick="changeCategory('arabic')"
+    >
+        ✨ Perfumes árabes
+    </button>
+
+</div>
+
+
 <div class="controls">
 
     <input
@@ -480,30 +541,11 @@ footer{
         oninput="render()"
     >
 
+
     <select id="brand" onchange="render()">
 
         <option value="">
             Todas las marcas
-        </option>
-
-        <option>
-            Valentino
-        </option>
-
-        <option>
-            Jean Paul Gaultier
-        </option>
-
-        <option>
-            Carolina Herrera
-        </option>
-
-        <option>
-            Versace
-        </option>
-
-        <option>
-            Yves Saint Laurent
         </option>
 
     </select>
@@ -534,8 +576,8 @@ footer{
 
 <main>
 
-    <h2 class="sectionTitle">
-        Colección para él
+    <h2 class="sectionTitle" id="sectionTitle">
+        Perfumes de diseñador
     </h2>
 
     <div class="grid" id="grid"></div>
@@ -581,11 +623,16 @@ footer{
 
 const products = [
 
+    /* ================================
+       PERFUMES DE DISEÑADOR
+    ================================= */
+
     {
         name:"Born in Roma Coral Fantasy",
         brand:"Valentino",
+        category:"designer",
         size:"100 ml",
-        price:55,
+        price:2500,
         lp:3400,
         image:"imagenes/coral.jpg"
     },
@@ -593,6 +640,7 @@ const products = [
     {
         name:"Le Male Elixir",
         brand:"Jean Paul Gaultier",
+        category:"designer",
         size:"100 ml",
         price:2600,
         lp:3550,
@@ -602,6 +650,7 @@ const products = [
     {
         name:"Le Male Le Parfum",
         brand:"Jean Paul Gaultier",
+        category:"designer",
         size:"100 ml",
         price:2300,
         lp:3300,
@@ -611,6 +660,7 @@ const products = [
     {
         name:"Le Beau Le Parfum",
         brand:"Jean Paul Gaultier",
+        category:"designer",
         size:"100 ml",
         price:2400,
         lp:3500,
@@ -620,6 +670,7 @@ const products = [
     {
         name:"Le Beau Paradise Garden",
         brand:"Jean Paul Gaultier",
+        category:"designer",
         size:"125 ml",
         price:2100,
         lp:3400,
@@ -629,6 +680,7 @@ const products = [
     {
         name:"212 Black Men",
         brand:"Carolina Herrera",
+        category:"designer",
         size:"100 ml",
         price:1800,
         lp:2900,
@@ -638,6 +690,7 @@ const products = [
     {
         name:"212 Black Men",
         brand:"Carolina Herrera",
+        category:"designer",
         size:"200 ml",
         price:3000,
         lp:4015,
@@ -647,6 +700,7 @@ const products = [
     {
         name:"Eros Flame",
         brand:"Versace",
+        category:"designer",
         size:"100 ml",
         price:1976,
         lp:3500,
@@ -656,6 +710,7 @@ const products = [
     {
         name:"Eros",
         brand:"Versace",
+        category:"designer",
         size:"200 ml",
         price:2200,
         lp:3800,
@@ -665,6 +720,7 @@ const products = [
     {
         name:"Eros",
         brand:"Versace",
+        category:"designer",
         size:"100 ml",
         price:1800,
         lp:3000,
@@ -674,6 +730,7 @@ const products = [
     {
         name:"Dylan Blue",
         brand:"Versace",
+        category:"designer",
         size:"100 ml",
         price:1500,
         lp:3000,
@@ -683,13 +740,116 @@ const products = [
     {
         name:"Y Eau de Parfum",
         brand:"Yves Saint Laurent",
+        category:"designer",
         size:"100 ml",
         price:3200,
         lp:3760,
         image:"imagenes/y-edp.jpg"
+    },
+
+
+    /* ================================
+       PERFUMES ÁRABES
+    ================================= */
+
+    {
+        name:"Odyssey Mandarin Sky",
+        brand:"Armaf",
+        category:"arabic",
+        size:"100 ml",
+        price:649,
+        lp:700,
+        image:"imagenes/odyssey-mandarin-sky.jpg"
+    },
+
+    {
+        name:"Odyssey Homme",
+        brand:"Armaf",
+        category:"arabic",
+        size:"100 ml",
+        price:649,
+        lp:850,
+        image:"imagenes/odyssey-homme.jpg"
+    },
+
+    {
+        name:"Odyssey Aoud",
+        brand:"Armaf",
+        category:"arabic",
+        size:"100 ml",
+        price:599,
+        lp:750,
+        image:"imagenes/odyssey-aoud.jpg"
+    },
+
+    {
+        name:"Hawas For Him",
+        brand:"Rasasi",
+        category:"arabic",
+        size:"100 ml",
+        price:699,
+        lp:900,
+        image:"imagenes/hawas-for-him.jpg"
+    },
+
+    {
+        name:"Hawas Ice",
+        brand:"Rasasi",
+        category:"arabic",
+        size:"100 ml",
+        price:799,
+        lp:950,
+        image:"imagenes/hawas-ice.jpg"
+    },
+
+    {
+        name:"Hawas Black",
+        brand:"Rasasi",
+        category:"arabic",
+        size:"100 ml",
+        price:699,
+        lp:800,
+        image:"imagenes/hawas-black.jpg"
+    },
+
+    {
+        name:"Khamrah Original",
+        brand:"Lattafa",
+        category:"arabic",
+        size:"100 ml",
+        price:549,
+        lp:650,
+        image:"imagenes/khamrah-original.jpg"
+    },
+
+    {
+        name:"Khamrah Qahwa",
+        brand:"Lattafa",
+        category:"arabic",
+        size:"100 ml",
+        price:649,
+        lp:750,
+        image:"imagenes/khamrah-qahwa.jpg"
+    },
+
+    {
+        name:"Khamrah Dukhan",
+        brand:"Lattafa",
+        category:"arabic",
+        size:"100 ml",
+        price:649,
+        lp:750,
+        image:"imagenes/khamrah-dukhan.jpg"
     }
 
 ];
+
+
+/* =========================================
+   CATEGORÍA ACTUAL
+========================================= */
+
+let currentCategory = "designer";
 
 
 /* =========================================
@@ -712,6 +872,91 @@ const money = n =>
             maximumFractionDigits:0
         }
     );
+
+
+/* =========================================
+   CAMBIAR CATEGORÍA
+========================================= */
+
+function changeCategory(category){
+
+    currentCategory = category;
+
+    document
+        .getElementById("designerBtn")
+        .classList
+        .toggle("active", category === "designer");
+
+    document
+        .getElementById("arabicBtn")
+        .classList
+        .toggle("active", category === "arabic");
+
+
+    document
+        .getElementById("sectionTitle")
+        .textContent =
+        category === "designer"
+        ? "Perfumes de diseñador"
+        : "Perfumes árabes";
+
+
+    document
+        .getElementById("search")
+        .value = "";
+
+
+    updateBrands();
+
+    render();
+
+}
+
+
+/* =========================================
+   ACTUALIZAR MARCAS
+========================================= */
+
+function updateBrands(){
+
+    const brandSelect =
+        document.getElementById("brand");
+
+    const brands = [
+
+        ...new Set(
+
+            products
+
+            .filter(
+                p => p.category === currentCategory
+            )
+
+            .map(
+                p => p.brand
+            )
+
+        )
+
+    ];
+
+
+    brandSelect.innerHTML = `
+
+        <option value="">
+            Todas las marcas
+        </option>
+
+        ${brands.map(
+            brand =>
+            `<option value="${brand}">
+                ${brand}
+            </option>`
+        ).join("")}
+
+    `;
+
+}
 
 
 /* =========================================
@@ -740,6 +985,10 @@ function render(){
     let a = products.filter(
 
         p =>
+
+        p.category === currentCategory
+
+        &&
 
         (p.name + " " + p.brand)
         .toLowerCase()
@@ -979,6 +1228,8 @@ function closeCart(){
 /* =========================================
    INICIAR PÁGINA
 ========================================= */
+
+updateBrands();
 
 render();
 
