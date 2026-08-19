@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOIRÉ — Perfumería</title>
+
+<style>
+:root{
+    --bg:#090909;
+    --card:#121212;
+    --card2:#181818;
+    --text:#f5f2ec;
+    --muted:#aaa59d;
+    --gold:#d8b36a;
+    --line:#292929;
+    --green:#79c78b
+}
+
+*{
+    box-sizing:border-box
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(9,9,9,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)
+}
+
+.nav{
+    max-width:1180px;
+    margin:auto;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+}
+
+.logo{
+    font-family:Georgia,serif;
+    letter-spacing:5px;
+    font-size:24px
+}
+
+.logo span{
+    color:var(--gold)
+}
+
+.cartBtn{
+    background:transparent;
+    color:white;
+    border:1px solid #444;
+    border-radius:30px;
+    padding:10px 16px;
+    cursor:pointer
+}
+
+/* HERO */
+
+.hero{
+    max-width:1180px;
+    margin:auto;
+    padding:72px 22px 48px;
+    display:grid;
+    grid-template-columns:1.4fr .8fr;
+    gap:40px;
+    align-items:center
+}
+
+.eyebrow{
+    color:var(--gold);
+    letter-spacing:3px;
+    font-size:12px;
+    text-transform:uppercase
+}
+
+.hero h1{
+    font:normal 58px Georgia,serif;
+    line-height:1.02;
+    margin:14px 0
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:17px;
+    max-width:580px;
+    line-height:1.7
+}
+
+.heroCard{
+    height:330px;
+    border:1px solid #333;
+    border-radius:28px;
+    background:
+    radial-gradient(circle at 50% 35%,#30271a,#151515 55%,#0c0c0c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden
+}
+
+.bottle{
+    width:105px;
+    height:190px;
+    border:2px solid #777;
+    border-radius:18px 18px 24px 24px;
+    background:linear-gradient(100deg,#1a1a1a,#c7a25e,#181818);
+    box-shadow:0 25px 60px #000;
+    position:relative
+}
+
+.bottle:before{
+    content:"";
+    position:absolute;
+    width:38px;
+    height:38px;
+    background:#111;
+    border:2px solid #777;
+    left:31px;
+    top:-40px;
+    border-radius:5px 5px 0 0
+}
+
+.bottle:after{
+    content:"NOIRÉ";
+    position:absolute;
+    left:0;
+    right:0;
+    top:80px;
+    text-align:center;
+    font:14px Georgia;
+    color:#eee;
+    letter-spacing:2px
+}
+
+/* CONTROLES */
+
+.controls{
+    max-width:1180px;
+    margin:auto;
+    padding:0 22px 25px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap
+}
+
+.search{
+    flex:1;
+    min-width:220px;
+    background:#111;
+    border:1px solid #333;
+    color:white;
+    padding:14px 17px;
+    border-radius:12px
+}
+
+select,
+.filter{
+    background:#111;
+    color:white;
+    border:1px solid #333;
+    padding:14px;
+    border-radius:12px
+}
+
+/* PRODUCTOS */
+
+main{
+    max-width:1180px;
+    margin:auto;
+    padding:10px 22px 70px
+}
+
+.sectionTitle{
+    font:normal 32px Georgia,serif;
+    margin:25px 0 22px
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.2s
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#555
+}
+
+/* IMAGEN DEL PERFUME */
+
+.pic{
+    height:300px;
+    background:
+    radial-gradient(circle at 50% 45%,#2b2b2b,#101010);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden
+}
+
+.productImage{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:20px;
+    transition:.3s
+}
+
+.card:hover .productImage{
+    transform:scale(1.05)
+}
+
+.badge{
+    position:absolute;
+    top:13px;
+    left:13px;
+    z-index:2;
+    background:var(--gold);
+    color:#111;
+    font-weight:bold;
+    font-size:11px;
+    padding:6px 9px;
+    border-radius:20px
+}
+
+/* INFORMACIÓN */
+
+.info{
+    padding:18px
+}
+
+.brand{
+    color:var(--gold);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px
+}
+
+.name{
+    font:normal 22px Georgia,serif;
+    margin:7px 0
+}
+
+.size{
+    color:var(--muted);
+    font-size:13px
+}
+
+.prices{
+    margin:15px 0
+}
+
+.price{
+    font-size:25px;
+    font-weight:700
+}
+
+.lp{
+    color:#777;
+    text-decoration:line-through;
+    margin-left:8px
+}
+
+.save{
+    color:var(--green);
+    font-size:13px;
+    margin-top:4px
+}
+
+.add{
+    width:100%;
+    border:0;
+    border-radius:11px;
+    padding:13px;
+    background:#eee;
+    color:#111;
+    font-weight:700;
+    cursor:pointer
+}
+
+.add:hover{
+    background:var(--gold)
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:35px 22px;
+    text-align:center;
+    color:#777
+}
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    color:#888;
+    padding:50px
+}
+
+/* CARRITO */
+
+.drawer{
+    position:fixed;
+    right:-430px;
+    top:0;
+    width:min(430px,100%);
+    height:100%;
+    background:#111;
+    z-index:50;
+    border-left:1px solid #333;
+    padding:22px;
+    transition:.25s;
+    overflow:auto
+}
+
+.drawer.open{
+    right:0
+}
+
+.drawer h2{
+    font:normal 28px Georgia
+}
+
+.close{
+    float:right;
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #292929;
+    padding:14px 0;
+    gap:10px
+}
+
+.checkout{
+    margin-top:25px;
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    background:var(--gold);
+    font-weight:bold;
+    cursor:pointer
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:45px
+    }
+
+    .heroCard{
+        height:250px
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    .hero h1{
+        font-size:44px
+    }
+}
+
+@media(max-width:520px){
+
+    .grid{
+        grid-template-columns:1fr
+    }
+
+    .nav{
+        padding:15px
+    }
+
+    .hero{
+        padding-left:18px;
+        padding-right:18px
+    }
+
+    .controls{
+        padding-left:18px;
+        padding-right:18px
+    }
+
+    main{
+        padding-left:18px;
+        padding-right:18px
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            NOIRÉ<span>.</span>
+        </div>
+
+        <button class="cartBtn" onclick="openCart()">
+            🛒 Carrito (<b id="count">0</b>)
+        </button>
+
+    </div>
+</header>
+
+
+<section class="hero">
+
+    <div>
+
+        <div class="eyebrow">
+            Perfumería • Selección premium
+        </div>
+
+        <h1>
+            Tu aroma.<br>
+            <i>Tu presencia.</i>
+        </h1>
+
+        <p>
+            Perfumes originales seleccionados para quienes quieren
+            oler increíble sin pagar de más. Compara nuestro precio
+            con Liverpool y encuentra tu próxima fragancia.
+        </p>
+
+    </div>
+
+
+    <div class="heroCard">
+
+        <div class="bottle"></div>
+
+    </div>
+
+</section>
+
+
+<div class="controls">
+
+    <input
+        class="search"
+        id="search"
+        placeholder="Buscar perfume..."
+        oninput="render()"
+    >
+
+    <select id="brand" onchange="render()">
+
+        <option value="">
+            Todas las marcas
+        </option>
+
+        <option>
+            Valentino
+        </option>
+
+        <option>
+            Jean Paul Gaultier
+        </option>
+
+        <option>
+            Carolina Herrera
+        </option>
+
+        <option>
+            Versace
+        </option>
+
+        <option>
+            Yves Saint Laurent
+        </option>
+
+    </select>
+
+
+    <select id="sort" onchange="render()">
+
+        <option value="default">
+            Orden recomendado
+        </option>
+
+        <option value="low">
+            Precio menor
+        </option>
+
+        <option value="high">
+            Precio mayor
+        </option>
+
+        <option value="save">
+            Mayor ahorro vs Liverpool
+        </option>
+
+    </select>
+
+</div>
+
+
+<main>
+
+    <h2 class="sectionTitle">
+        Colección para él
+    </h2>
+
+    <div class="grid" id="grid"></div>
+
+</main>
+
+
+<footer>
+    NOIRÉ PERFUMERÍA · Catálogo de ejemplo ·
+    Precios proporcionados por el vendedor
+</footer>
+
+
+<aside class="drawer" id="drawer">
+
+    <button class="close" onclick="closeCart()">
+        ×
+    </button>
+
+    <h2>
+        Tu carrito
+    </h2>
+
+    <div id="cartItems"></div>
+
+    <h3 id="total"></h3>
+
+    <button
+        class="checkout"
+        onclick="alert('Aquí conectaremos WhatsApp, Mercado Pago o el método de pago que elijan.')"
+    >
+        Continuar compra
+    </button>
+
+</aside>
+
+
+<script>
+
+/* =========================================
+   PRODUCTOS
+========================================= */
+
+const products = [
+
+    {
+        name:"Born in Roma Coral Fantasy",
+        brand:"Valentino",
+        size:"100 ml",
+        price:2500,
+        lp:3400,
+        image:"imagenes/coral.jpg"
+    },
+
+    {
+        name:"Le Male Elixir",
+        brand:"Jean Paul Gaultier",
+        size:"100 ml",
+        price:2600,
+        lp:3550,
+        image:"imagenes/elixir.jpg"
+    },
+
+    {
+        name:"Le Male Le Parfum",
+        brand:"Jean Paul Gaultier",
+        size:"100 ml",
+        price:2300,
+        lp:3300,
+        image:"imagenes/le-male-parfum.jpg"
+    },
+
+    {
+        name:"Le Beau Le Parfum",
+        brand:"Jean Paul Gaultier",
+        size:"100 ml",
+        price:2400,
+        lp:3500,
+        image:"imagenes/le-beau-parfum.jpg"
+    },
+
+    {
+        name:"Le Beau Paradise Garden",
+        brand:"Jean Paul Gaultier",
+        size:"125 ml",
+        price:2100,
+        lp:3400,
+        image:"imagenes/paradise-garden.jpg"
+    },
+
+    {
+        name:"212 Black Men",
+        brand:"Carolina Herrera",
+        size:"100 ml",
+        price:1800,
+        lp:2900,
+        image:"imagenes/212-black-100.jpg"
+    },
+
+    {
+        name:"212 Black Men",
+        brand:"Carolina Herrera",
+        size:"200 ml",
+        price:3000,
+        lp:4015,
+        image:"imagenes/212-black-200.jpg"
+    },
+
+    {
+        name:"Eros Flame",
+        brand:"Versace",
+        size:"100 ml",
+        price:1976,
+        lp:3500,
+        image:"imagenes/eros-flame.jpg"
+    },
+
+    {
+        name:"Eros",
+        brand:"Versace",
+        size:"200 ml",
+        price:2200,
+        lp:3800,
+        image:"imagenes/eros-200.jpg"
+    },
+
+    {
+        name:"Eros",
+        brand:"Versace",
+        size:"100 ml",
+        price:1800,
+        lp:3000,
+        image:"imagenes/eros-100.jpg"
+    },
+
+    {
+        name:"Dylan Blue",
+        brand:"Versace",
+        size:"100 ml",
+        price:1500,
+        lp:3000,
+        image:"imagenes/dylan-blue.jpg"
+    },
+
+    {
+        name:"Y Eau de Parfum",
+        brand:"Yves Saint Laurent",
+        size:"100 ml",
+        price:3200,
+        lp:3760,
+        image:"imagenes/y-edp.jpg"
+    }
+
+];
+
+
+/* =========================================
+   CARRITO
+========================================= */
+
+let cart=[];
+
+
+/* =========================================
+   FORMATO DE DINERO
+========================================= */
+
+const money = n =>
+    n.toLocaleString(
+        "es-MX",
+        {
+            style:"currency",
+            currency:"MXN",
+            maximumFractionDigits:0
+        }
+    );
+
+
+/* =========================================
+   MOSTRAR PRODUCTOS
+========================================= */
+
+function render(){
+
+    const q =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const b =
+        document
+        .getElementById("brand")
+        .value;
+
+    const s =
+        document
+        .getElementById("sort")
+        .value;
+
+
+    let a = products.filter(
+
+        p =>
+
+        (p.name + " " + p.brand)
+        .toLowerCase()
+        .includes(q)
+
+        &&
+
+        (!b || p.brand === b)
+
+    );
+
+
+    if(s === "low")
+        a.sort((x,y) => x.price-y.price);
+
+
+    if(s === "high")
+        a.sort((x,y) => y.price-x.price);
+
+
+    if(s === "save")
+        a.sort(
+            (x,y) =>
+            (y.lp-y.price) -
+            (x.lp-x.price)
+        );
+
+
+    document.getElementById("grid").innerHTML =
+
+        a.length
+
+        ?
+
+        a.map(
+
+            p => `
+
+            <article class="card">
+
+                <div class="pic">
+
+                    <div class="badge">
+                        AHORRA ${money(p.lp-p.price)}
+                    </div>
+
+
+                    <img
+                        class="productImage"
+                        src="${p.image}"
+                        alt="${p.name}"
+                        onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','<span style=\\'color:#777;position:absolute;\\'>Imagen no disponible</span>')"
+                    >
+
+                </div>
+
+
+                <div class="info">
+
+                    <div class="brand">
+                        ${p.brand}
+                    </div>
+
+
+                    <div class="name">
+                        ${p.name}
+                    </div>
+
+
+                    <div class="size">
+                        ${p.size}
+                    </div>
+
+
+                    <div class="prices">
+
+                        <span class="price">
+                            ${money(p.price)}
+                        </span>
+
+                        <span class="lp">
+                            LP ${money(p.lp)}
+                        </span>
+
+                        <div class="save">
+                            Ahorro comparado con Liverpool
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="add"
+                        onclick="add('${p.name}','${p.brand}','${p.size}',${p.price})"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </article>
+
+            `
+
+        ).join("")
+
+        :
+
+        `
+        <div class="empty">
+            No encontramos ese perfume.
+        </div>
+        `;
+
+}
+
+
+/* =========================================
+   AGREGAR AL CARRITO
+========================================= */
+
+function add(name,brand,size,price){
+
+    cart.push({
+        name,
+        brand,
+        size,
+        price
+    });
+
+    update();
+
+    openCart();
+
+}
+
+
+/* =========================================
+   ACTUALIZAR CARRITO
+========================================= */
+
+function update(){
+
+    document
+        .getElementById("count")
+        .textContent = cart.length;
+
+
+    document
+        .getElementById("cartItems")
+        .innerHTML =
+
+        cart.length
+
+        ?
+
+        cart.map(
+
+            (x,i) => `
+
+            <div class="item">
+
+                <div>
+
+                    <b>
+                        ${x.name}
+                    </b>
+
+                    <br>
+
+                    <small>
+                        ${x.brand} · ${x.size}
+                    </small>
+
+                </div>
+
+
+                <b>
+                    ${money(x.price)}
+                </b>
+
+            </div>
+
+            `
+
+        ).join("")
+
+        :
+
+        `
+        <p style="color:#888">
+            Tu carrito está vacío.
+        </p>
+        `;
+
+
+    document
+        .getElementById("total")
+        .textContent =
+
+        "Total: " +
+
+        money(
+            cart.reduce(
+                (a,x) => a+x.price,
+                0
+            )
+        );
+
+}
+
+
+/* =========================================
+   ABRIR / CERRAR CARRITO
+========================================= */
+
+function openCart(){
+
+    document
+        .getElementById("drawer")
+        .classList
+        .add("open");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("drawer")
+        .classList
+        .remove("open");
+
+}
+
+
+/* =========================================
+   INICIAR PÁGINA
+========================================= */
+
+render();
+
+update();
+
+</script>
+
+</body>
+</html>
