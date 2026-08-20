@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -312,7 +313,7 @@ main{
     font-weight:700
 }
 
-.lp{
+.referencePrice{
     color:#777;
     text-decoration:line-through;
     margin-left:8px
@@ -493,8 +494,8 @@ footer{
 
         <p>
             Perfumes originales seleccionados para quienes quieren
-            oler increíble sin pagar de más. Compara nuestro precio
-            con Liverpool y encuentra tu próxima fragancia.
+            oler increíble sin pagar de más. Descubre precios
+            especiales y encuentra tu próxima fragancia.
         </p>
 
     </div>
@@ -542,9 +543,11 @@ footer{
     >
 
     <select id="brand" onchange="render()">
+
         <option value="">
             Todas las marcas
         </option>
+
     </select>
 
     <select id="sort" onchange="render()">
@@ -562,7 +565,7 @@ footer{
         </option>
 
         <option value="save">
-            Mayor ahorro vs Liverpool
+            Mayor ahorro
         </option>
 
     </select>
@@ -583,7 +586,7 @@ footer{
 
 <footer>
     E&I PARFUM · Catálogo de ejemplo ·
-    Precios proporcionados por el vendedor
+    Precios sujetos a cambios
 </footer>
 
 
@@ -631,7 +634,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:2500,
-        lp:3400,
+        referencePrice:3400,
         image:"imagenes/coral.jpg"
     },
 
@@ -641,7 +644,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:2600,
-        lp:3550,
+        referencePrice:3550,
         image:"imagenes/elixir.jpg"
     },
 
@@ -651,7 +654,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:2300,
-        lp:3300,
+        referencePrice:3300,
         image:"imagenes/le-male-parfum.jpg"
     },
 
@@ -661,7 +664,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:2400,
-        lp:3500,
+        referencePrice:3500,
         image:"imagenes/le-beau-parfum.jpg"
     },
 
@@ -671,7 +674,7 @@ const products = [
         category:"designer",
         size:"125 ml",
         price:2100,
-        lp:3400,
+        referencePrice:3400,
         image:"imagenes/paradise-garden.jpg"
     },
 
@@ -681,7 +684,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:1800,
-        lp:2900,
+        referencePrice:2900,
         image:"imagenes/212-black-100.jpg"
     },
 
@@ -691,7 +694,7 @@ const products = [
         category:"designer",
         size:"200 ml",
         price:3000,
-        lp:4015,
+        referencePrice:4015,
         image:"imagenes/212-black-200.jpg"
     },
 
@@ -701,7 +704,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:1976,
-        lp:3500,
+        referencePrice:3500,
         image:"imagenes/eros-flame.jpg"
     },
 
@@ -711,7 +714,7 @@ const products = [
         category:"designer",
         size:"200 ml",
         price:2200,
-        lp:3800,
+        referencePrice:3800,
         image:"imagenes/eros-200.jpg"
     },
 
@@ -721,7 +724,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:1800,
-        lp:3000,
+        referencePrice:3000,
         image:"imagenes/eros-100.jpg"
     },
 
@@ -731,7 +734,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:1500,
-        lp:3000,
+        referencePrice:3000,
         image:"imagenes/dylan-blue.jpg"
     },
 
@@ -741,7 +744,7 @@ const products = [
         category:"designer",
         size:"100 ml",
         price:3200,
-        lp:3760,
+        referencePrice:3760,
         image:"imagenes/y-edp.jpg"
     },
 
@@ -758,7 +761,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:850,
+        referencePrice:850,
         image:"imagenes/9pm.jpg"
     },
 
@@ -768,7 +771,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        lp:1200,
+        referencePrice:1200,
         image:"imagenes/9pm-night-out.jpg"
     },
 
@@ -778,7 +781,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        lp:1000,
+        referencePrice:1000,
         image:"imagenes/9pm-elixir.jpg"
     },
 
@@ -791,7 +794,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:900,
+        referencePrice:900,
         image:"imagenes/odyssey-mandarin-sky.jpg"
     },
 
@@ -801,7 +804,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:749,
-        lp:1000,
+        referencePrice:1000,
         image:"imagenes/odyssey-aqua.jpg"
     },
 
@@ -811,7 +814,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:900,
+        referencePrice:900,
         image:"imagenes/odyssey-mega.jpg"
     },
 
@@ -824,7 +827,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        lp:1000,
+        referencePrice:1000,
         image:"imagenes/hawas-ice.jpg"
     },
 
@@ -834,7 +837,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        lp:1000,
+        referencePrice:1000,
         image:"imagenes/hawas-malibu.jpg"
     },
 
@@ -844,7 +847,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:699,
-        lp:1000,
+        referencePrice:1000,
         image:"imagenes/hawas-tropical.jpg"
     },
 
@@ -854,7 +857,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:699,
-        lp:900,
+        referencePrice:900,
         image:"imagenes/hawas-kobra.jpg"
     },
 
@@ -867,7 +870,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:549,
-        lp:650,
+        referencePrice:650,
         image:"imagenes/khamrah-original.jpg"
     },
 
@@ -877,7 +880,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:750,
+        referencePrice:750,
         image:"imagenes/khamrah-qahwa.jpg"
     },
 
@@ -887,7 +890,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:750,
+        referencePrice:750,
         image:"imagenes/khamrah-dukhan.jpg"
     }
 
@@ -1068,8 +1071,8 @@ function render(){
     if(s === "save")
         a.sort(
             (x,y) =>
-            (y.lp-y.price) -
-            (x.lp-x.price)
+            (y.referencePrice-y.price) -
+            (x.referencePrice-x.price)
         );
 
 
@@ -1088,7 +1091,7 @@ function render(){
                 <div class="pic">
 
                     <div class="badge">
-                        AHORRA ${money(p.lp-p.price)}
+                        AHORRA ${money(p.referencePrice-p.price)}
                     </div>
 
                     <img
@@ -1124,12 +1127,12 @@ function render(){
                             ${money(p.price)}
                         </span>
 
-                        <span class="lp">
-                            LP ${money(p.lp)}
+                        <span class="referencePrice">
+                            Precio de referencia ${money(p.referencePrice)}
                         </span>
 
                         <div class="save">
-                            Ahorro comparado con Liverpool
+                            Ahorro frente al precio de referencia
                         </div>
 
                     </div>
@@ -1306,3 +1309,4 @@ update();
 
 </body>
 </html>
+```
