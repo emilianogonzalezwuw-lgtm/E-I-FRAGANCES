@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -502,7 +501,9 @@ footer{
 
 
     <div class="heroCard">
+
         <div class="bottle"></div>
+
     </div>
 
 </section>
@@ -542,7 +543,7 @@ footer{
         oninput="render()"
     >
 
-    <select id="brand" onchange="render()">
+    <select id="brand" onchange="render">
 
         <option value="">
             Todas las marcas
@@ -1128,11 +1129,11 @@ function render(){
                         </span>
 
                         <span class="referencePrice">
-                            Precio de referencia ${money(p.referencePrice)}
+                            Precio original: ${money(p.referencePrice)}
                         </span>
 
                         <div class="save">
-                            Ahorro frente al precio de referencia
+                            Ahorras ${money(p.referencePrice-p.price)}
                         </div>
 
                     </div>
@@ -1309,4 +1310,3 @@ update();
 
 </body>
 </html>
-```
