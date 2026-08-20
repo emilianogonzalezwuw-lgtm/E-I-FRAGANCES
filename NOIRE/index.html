@@ -242,7 +242,7 @@ main{
     border-color:#555
 }
 
-/* IMAGEN DEL PERFUME */
+/* IMAGEN */
 
 .pic{
     height:300px;
@@ -501,9 +501,7 @@ footer{
 
 
     <div class="heroCard">
-
         <div class="bottle"></div>
-
     </div>
 
 </section>
@@ -532,6 +530,8 @@ footer{
 </div>
 
 
+<!-- CONTROLES -->
+
 <div class="controls">
 
     <input
@@ -541,15 +541,11 @@ footer{
         oninput="render()"
     >
 
-
     <select id="brand" onchange="render()">
-
         <option value="">
             Todas las marcas
         </option>
-
     </select>
-
 
     <select id="sort" onchange="render()">
 
@@ -591,6 +587,8 @@ footer{
 </footer>
 
 
+<!-- CARRITO -->
+
 <aside class="drawer" id="drawer">
 
     <button class="close" onclick="closeCart()">
@@ -623,9 +621,9 @@ footer{
 
 const products = [
 
-    /* ================================
+    /* =====================================
        PERFUMES DE DISEÑADOR
-    ================================= */
+    ===================================== */
 
     {
         name:"Born in Roma Coral Fantasy",
@@ -748,9 +746,44 @@ const products = [
     },
 
 
-    /* ================================
+    /* =====================================
        PERFUMES ÁRABES
-    ================================= */
+    ===================================== */
+
+    /* AFNAN */
+
+    {
+        name:"9PM",
+        brand:"Afnan",
+        category:"arabic",
+        size:"100 ml",
+        price:649,
+        lp:850,
+        image:"imagenes/9pm.jpg"
+    },
+
+    {
+        name:"9PM Night Out",
+        brand:"Afnan",
+        category:"arabic",
+        size:"100 ml",
+        price:799,
+        lp:1200,
+        image:"imagenes/9pm-night-out.jpg"
+    },
+
+    {
+        name:"9PM Elixir",
+        brand:"Afnan",
+        category:"arabic",
+        size:"100 ml",
+        price:799,
+        lp:1000,
+        image:"imagenes/9pm-elixir.jpg"
+    },
+
+
+    /* ARMAF */
 
     {
         name:"Odyssey Mandarin Sky",
@@ -758,39 +791,32 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:700,
+        lp:900,
         image:"imagenes/odyssey-mandarin-sky.jpg"
     },
 
     {
-        name:"Odyssey Homme",
+        name:"Odyssey Aqua",
+        brand:"Armaf",
+        category:"arabic",
+        size:"100 ml",
+        price:749,
+        lp:1000,
+        image:"imagenes/odyssey-aqua.jpg"
+    },
+
+    {
+        name:"Odyssey Mega",
         brand:"Armaf",
         category:"arabic",
         size:"100 ml",
         price:649,
-        lp:850,
-        image:"imagenes/odyssey-homme.jpg"
-    },
-
-    {
-        name:"Odyssey Aoud",
-        brand:"Armaf",
-        category:"arabic",
-        size:"100 ml",
-        price:599,
-        lp:750,
-        image:"imagenes/odyssey-aoud.jpg"
-    },
-
-    {
-        name:"Hawas For Him",
-        brand:"Rasasi",
-        category:"arabic",
-        size:"100 ml",
-        price:699,
         lp:900,
-        image:"imagenes/hawas-for-him.jpg"
+        image:"imagenes/odyssey-mega.jpg"
     },
+
+
+    /* RASASI */
 
     {
         name:"Hawas Ice",
@@ -798,19 +824,42 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        lp:950,
+        lp:1000,
         image:"imagenes/hawas-ice.jpg"
     },
 
     {
-        name:"Hawas Black",
+        name:"Hawas Malibu",
+        brand:"Rasasi",
+        category:"arabic",
+        size:"100 ml",
+        price:799,
+        lp:1000,
+        image:"imagenes/hawas-malibu.jpg"
+    },
+
+    {
+        name:"Hawas Tropical",
         brand:"Rasasi",
         category:"arabic",
         size:"100 ml",
         price:699,
-        lp:800,
-        image:"imagenes/hawas-black.jpg"
+        lp:1000,
+        image:"imagenes/hawas-tropical.jpg"
     },
+
+    {
+        name:"Hawas Kobra",
+        brand:"Rasasi",
+        category:"arabic",
+        size:"100 ml",
+        price:699,
+        lp:900,
+        image:"imagenes/hawas-kobra.jpg"
+    },
+
+
+    /* LATTAFA KHAMRAH */
 
     {
         name:"Khamrah Original",
@@ -885,13 +934,18 @@ function changeCategory(category){
     document
         .getElementById("designerBtn")
         .classList
-        .toggle("active", category === "designer");
+        .toggle(
+            "active",
+            category === "designer"
+        );
 
     document
         .getElementById("arabicBtn")
         .classList
-        .toggle("active", category === "arabic");
-
+        .toggle(
+            "active",
+            category === "arabic"
+        );
 
     document
         .getElementById("sectionTitle")
@@ -900,11 +954,9 @@ function changeCategory(category){
         ? "Perfumes de diseñador"
         : "Perfumes árabes";
 
-
     document
         .getElementById("search")
         .value = "";
-
 
     updateBrands();
 
@@ -928,13 +980,13 @@ function updateBrands(){
 
             products
 
-            .filter(
-                p => p.category === currentCategory
-            )
+                .filter(
+                    p => p.category === currentCategory
+                )
 
-            .map(
-                p => p.brand
-            )
+                .map(
+                    p => p.brand
+                )
 
         )
 
@@ -991,8 +1043,8 @@ function render(){
         &&
 
         (p.name + " " + p.brand)
-        .toLowerCase()
-        .includes(q)
+            .toLowerCase()
+            .includes(q)
 
         &&
 
@@ -1002,11 +1054,15 @@ function render(){
 
 
     if(s === "low")
-        a.sort((x,y) => x.price-y.price);
+        a.sort(
+            (x,y) => x.price-y.price
+        );
 
 
     if(s === "high")
-        a.sort((x,y) => y.price-x.price);
+        a.sort(
+            (x,y) => y.price-x.price
+        );
 
 
     if(s === "save")
@@ -1034,7 +1090,6 @@ function render(){
                     <div class="badge">
                         AHORRA ${money(p.lp-p.price)}
                     </div>
-
 
                     <img
                         class="productImage"
@@ -1098,9 +1153,11 @@ function render(){
         :
 
         `
+
         <div class="empty">
             No encontramos ese perfume.
         </div>
+
         `;
 
 }
@@ -1110,7 +1167,12 @@ function render(){
    AGREGAR AL CARRITO
 ========================================= */
 
-function add(name,brand,size,price){
+function add(
+    name,
+    brand,
+    size,
+    price
+){
 
     cart.push({
         name,
@@ -1134,7 +1196,8 @@ function update(){
 
     document
         .getElementById("count")
-        .textContent = cart.length;
+        .textContent =
+        cart.length;
 
 
     document
@@ -1179,9 +1242,11 @@ function update(){
         :
 
         `
+
         <p style="color:#888">
             Tu carrito está vacío.
         </p>
+
         `;
 
 
@@ -1192,10 +1257,12 @@ function update(){
         "Total: " +
 
         money(
+
             cart.reduce(
                 (a,x) => a+x.price,
                 0
             )
+
         );
 
 }
