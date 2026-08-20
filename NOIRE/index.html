@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -384,7 +385,8 @@ footer{
     background:none;
     border:0;
     color:white;
-    font-size:25px
+    font-size:25px;
+    cursor:pointer
 }
 
 .item{
@@ -403,7 +405,13 @@ footer{
     border-radius:12px;
     background:var(--gold);
     font-weight:bold;
-    cursor:pointer
+    cursor:pointer;
+    transition:.2s
+}
+
+.checkout:hover{
+    transform:translateY(-2px);
+    background:#e5c37e
 }
 
 /* RESPONSIVE */
@@ -543,7 +551,7 @@ footer{
         oninput="render()"
     >
 
-    <select id="brand" onchange="render">
+    <select id="brand" onchange="render()">
 
         <option value="">
             Todas las marcas
@@ -609,9 +617,9 @@ footer{
 
     <button
         class="checkout"
-        onclick="alert('Aquí conectaremos WhatsApp, Mercado Pago o el método de pago que elijan.')"
+        onclick="contactWhatsApp()"
     >
-        Continuar compra
+        📱 Solicitar asesoría por WhatsApp
     </button>
 
 </aside>
@@ -754,14 +762,12 @@ const products = [
        PERFUMES ÁRABES
     ===================================== */
 
-    /* AFNAN */
-
     {
         name:"9PM",
         brand:"Afnan",
         category:"arabic",
         size:"100 ml",
-        price:649,
+        price:700,
         referencePrice:850,
         image:"imagenes/9pm.jpg"
     },
@@ -771,7 +777,7 @@ const products = [
         brand:"Afnan",
         category:"arabic",
         size:"100 ml",
-        price:799,
+        price:1099,
         referencePrice:1200,
         image:"imagenes/9pm-night-out.jpg"
     },
@@ -781,7 +787,7 @@ const products = [
         brand:"Afnan",
         category:"arabic",
         size:"100 ml",
-        price:799,
+        price:699,
         referencePrice:1000,
         image:"imagenes/9pm-elixir.jpg"
     },
@@ -794,7 +800,7 @@ const products = [
         brand:"Armaf",
         category:"arabic",
         size:"100 ml",
-        price:649,
+        price:699,
         referencePrice:900,
         image:"imagenes/odyssey-mandarin-sky.jpg"
     },
@@ -828,7 +834,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:799,
-        referencePrice:1000,
+        referencePrice:1200,
         image:"imagenes/hawas-ice.jpg"
     },
 
@@ -837,8 +843,8 @@ const products = [
         brand:"Rasasi",
         category:"arabic",
         size:"100 ml",
-        price:799,
-        referencePrice:1000,
+        price:849,
+        referencePrice:1200,
         image:"imagenes/hawas-malibu.jpg"
     },
 
@@ -847,7 +853,7 @@ const products = [
         brand:"Rasasi",
         category:"arabic",
         size:"100 ml",
-        price:699,
+        price:849,
         referencePrice:1000,
         image:"imagenes/hawas-tropical.jpg"
     },
@@ -857,8 +863,8 @@ const products = [
         brand:"Rasasi",
         category:"arabic",
         size:"100 ml",
-        price:699,
-        referencePrice:900,
+        price:849,
+        referencePrice:1000,
         image:"imagenes/hawas-kobra.jpg"
     },
 
@@ -871,7 +877,7 @@ const products = [
         category:"arabic",
         size:"100 ml",
         price:549,
-        referencePrice:650,
+        referencePrice:700,
         image:"imagenes/khamrah-original.jpg"
     },
 
@@ -1273,6 +1279,71 @@ function update(){
 
 
 /* =========================================
+   WHATSAPP / ASESORÍA
+========================================= */
+
+function contactWhatsApp(){
+
+    const phone = "523312691042";
+
+    let message =
+        "Hola, me interesa realizar una compra en E&I PARFUM.%0A%0A";
+
+    if(cart.length > 0){
+
+        message += "Perfumes seleccionados:%0A";
+
+        cart.forEach((x,i) => {
+
+            message +=
+                (i + 1) +
+                ". " +
+                x.name +
+                " - " +
+                x.brand +
+                " - " +
+                x.size +
+                " - " +
+                money(x.price) +
+                "%0A";
+
+        });
+
+        const total =
+            cart.reduce(
+                (a,x) => a+x.price,
+                0
+            );
+
+        message +=
+            "%0ATotal aproximado: " +
+            money(total);
+
+    }else{
+
+        message +=
+            "Quisiera recibir asesoría sobre los perfumes disponibles.";
+
+    }
+
+    message +=
+        "%0A%0AQuisiera recibir asesoría para realizar mi compra.";
+
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        message;
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================================
    ABRIR / CERRAR CARRITO
 ========================================= */
 
@@ -1310,3 +1381,4 @@ update();
 
 </body>
 </html>
+```
