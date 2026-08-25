@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>E&I PARFUM — Perfumería</title>
+<title>E&I FRAGANCE — Perfumería</title>
 
 <style>
 :root{
@@ -67,6 +67,22 @@ header{
     border-radius:30px;
     padding:10px 16px;
     cursor:pointer
+}
+
+/* AVISO DE ENTREGA */
+
+.deliveryNotice{
+    max-width:1180px;
+    margin:10px auto 0;
+    padding:0 22px;
+    text-align:center;
+    color:#bdb7ad;
+    font-size:13px;
+    letter-spacing:.3px
+}
+
+.deliveryNotice strong{
+    color:var(--gold)
 }
 
 /* HERO */
@@ -340,6 +356,64 @@ main{
     background:var(--gold)
 }
 
+/* AVISOS */
+
+.originalNotice{
+    max-width:1180px;
+    margin:18px auto 0;
+    padding:0 22px;
+    color:#c9c4bb;
+    font-size:12px;
+    letter-spacing:.4px;
+    text-align:center
+}
+
+.morePerfumes{
+    margin:45px 0 10px;
+    padding:22px 24px;
+    border:1px solid rgba(216,179,106,.45);
+    border-radius:18px;
+    background:linear-gradient(135deg,#17130d,#121212);
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow:0 12px 35px rgba(0,0,0,.22)
+}
+
+.morePerfumesIcon{
+    font-size:30px;
+    flex-shrink:0
+}
+
+.morePerfumes strong{
+    display:block;
+    color:var(--gold);
+    font:normal 22px Georgia,serif;
+    margin-bottom:6px
+}
+
+.morePerfumes p{
+    margin:0;
+    color:#b8b3aa;
+    line-height:1.6;
+    font-size:14px
+}
+
+@media(max-width:520px){
+    .originalNotice{
+        padding:0 18px
+    }
+
+    .morePerfumes{
+        align-items:flex-start;
+        padding:20px
+    }
+
+    .morePerfumes strong{
+        font-size:19px
+    }
+}
+
 /* FOOTER */
 
 footer{
@@ -466,6 +540,27 @@ footer{
         padding-right:18px
     }
 }
+.instagramNotice{
+    max-width:1180px;
+    margin:8px auto 0;
+    padding:0 22px;
+    text-align:center;
+    color:#bdb7ad;
+    font-size:13px;
+    letter-spacing:.3px
+}
+
+.instagramNotice a{
+    color:var(--gold);
+    text-decoration:none;
+    font-weight:700;
+    transition:.2s
+}
+
+.instagramNotice a:hover{
+    color:#f0d18d;
+    text-decoration:underline
+}
 </style>
 </head>
 
@@ -475,7 +570,7 @@ footer{
     <div class="nav">
 
         <div class="logo">
-            E&I PARFUM<span>.</span>
+            E&I FRAGANCE<span>.</span>
         </div>
 
         <button class="cartBtn" onclick="openCart()">
@@ -485,6 +580,23 @@ footer{
     </div>
 </header>
 
+
+<div class="originalNotice">
+    ✓ Perfumería 100% original · Productos auténticos y cuidadosamente seleccionados
+</div>
+
+<div class="deliveryNotice">
+    🚚 <strong>Entregas en todo Guadalajara</strong> · Consulta disponibilidad y zonas de entrega por WhatsApp.
+</div>
+
+<div class="instagramNotice">
+    📸 Síguenos en Instagram:
+    <a href="https://www.instagram.com/ei_parfums/"
+       target="_blank"
+       rel="noopener noreferrer">
+        @ei_parfums
+    </a>
+</div>
 
 <section class="hero">
 
@@ -590,11 +702,22 @@ footer{
 
     <div class="grid" id="grid"></div>
 
+    <section class="morePerfumes">
+        <div class="morePerfumesIcon">✨</div>
+        <div>
+            <strong>¿Buscas una fragancia que no aparece aquí?</strong>
+            <p>
+                Contamos con muchos más perfumes y también con fragancias para dama.
+                Pregúntanos por el perfume que necesitas y con gusto te ayudamos a encontrarlo.
+            </p>
+        </div>
+    </section>
+
 </main>
 
 
 <footer>
-    E&I PARFUM · Catálogo de ejemplo ·
+    E&I FRAGANCE · Perfumería ·
     Precios sujetos a cambios
 </footer>
 
@@ -662,7 +785,7 @@ const products = [
         brand:"Jean Paul Gaultier",
         category:"designer",
         size:"100 ml",
-        price:2300,
+        price:2600,
         referencePrice:3300,
         image:"imagenes/le-male-parfum.jpg"
     },
@@ -672,7 +795,7 @@ const products = [
         brand:"Jean Paul Gaultier",
         category:"designer",
         size:"100 ml",
-        price:2400,
+        price:2600,
         referencePrice:3500,
         image:"imagenes/le-beau-parfum.jpg"
     },
@@ -685,6 +808,16 @@ const products = [
         price:2100,
         referencePrice:3400,
         image:"imagenes/paradise-garden.jpg"
+    },
+
+    {
+        name:"Le Beau Eau de Toilette",
+        brand:"Jean Paul Gaultier",
+        category:"designer",
+        size:"100 ml",
+        price:2100,
+        referencePrice:3050,
+        image:"imagenes/le-beau-edt.jpg"
     },
 
     {
@@ -738,6 +871,16 @@ const products = [
     },
 
     {
+        name:"Eros Energy",
+        brand:"Versace",
+        category:"designer",
+        size:"100 ml",
+        price:1500,
+        referencePrice:2000,
+        image:"imagenes/eros-energy.jpg"
+    },
+
+    {
         name:"Dylan Blue",
         brand:"Versace",
         category:"designer",
@@ -757,43 +900,190 @@ const products = [
         image:"imagenes/y-edp.jpg"
     },
 
+    {
+        name:"Invictus Parfum",
+        brand:"Rabanne",
+        category:"designer",
+        size:"100 ml",
+        price:2650,
+        referencePrice:4445,
+        image:"imagenes/invictus-parfum.jpg"
+    },
+
+    {
+        name:"Stronger With You Eau de Toilette",
+        brand:"Emporio Armani",
+        category:"designer",
+        size:"100 ml",
+        price:2249,
+        referencePrice:3490,
+        image:"imagenes/stronger-with-you-edt.jpg"
+    },
+
+    {
+        name:"Stronger With You Parfum",
+        brand:"Emporio Armani",
+        category:"designer",
+        size:"100 ml",
+        price:2750,
+        referencePrice:3100,
+        image:"imagenes/stronger-with-you-parfum.jpg"
+    },
+
+    {
+        name:"Acqua di Giò Profondo",
+        brand:"Giorgio Armani",
+        category:"designer",
+        size:"100 ml",
+        price:2949,
+        referencePrice:4350,
+        image:"imagenes/acqua-di-gio-profondo.jpg"
+    },
+
+    {
+        name:"Set One Million",
+        brand:"Rabanne",
+        category:"designer",
+        size:"Set",
+        price:2149,
+        referencePrice:2800,
+        image:"imagenes/set-one-million.jpg"
+    },
+
+    {
+        name:"Invictus Victory Elixir",
+        brand:"Rabanne",
+        category:"designer",
+        size:"100 ml",
+        price:2649,
+        referencePrice:4650,
+        image:"imagenes/invictus-victory-elixir.jpg"
+    },
+
+    {
+        name:"Scandal Le Parfum",
+        brand:"Jean Paul Gaultier",
+        category:"designer",
+        size:"100 ml",
+        price:2500,
+        referencePrice:3935,
+        image:"imagenes/scandal-le-parfum.jpg"
+    },
+
+    {
+        name:"Scandal Pour Homme Intense",
+        brand:"Jean Paul Gaultier",
+        category:"designer",
+        size:"100 ml",
+        price:2649,
+        referencePrice:3935,
+        image:"imagenes/scandal-intense.jpg"
+    },
+
+    {
+        name:"Scandal Pour Homme Eau de Toilette",
+        brand:"Jean Paul Gaultier",
+        category:"designer",
+        size:"100 ml",
+        price:2200,
+        referencePrice:3050,
+        image:"imagenes/scandal-edt.jpg"
+    },
+
+    {
+        name:"Bad Boy Eau de Toilette",
+        brand:"Carolina Herrera",
+        category:"designer",
+        size:"100 ml",
+        price:2400,
+        referencePrice:3740,
+        image:"imagenes/bad-boy-edt.jpg"
+    },
+
+    {
+        name:"1 Million",
+        brand:"Rabanne",
+        category:"designer",
+        size:"100 ml",
+        price:2000,
+        referencePrice:3875,
+        image:"imagenes/one-million.jpg"
+    },
+
+    {
+        name:"1 Million Parfum",
+        brand:"Rabanne",
+        category:"designer",
+        size:"100 ml",
+        price:2500,
+        referencePrice:4455,
+        image:"imagenes/one-million-parfum.jpg"
+    },
+
+    {
+        name:"1 Million Royal",
+        brand:"Rabanne",
+        category:"designer",
+        size:"100 ml",
+        price:2700,
+        referencePrice:4455,
+        image:"imagenes/one-million-royal.jpg"
+    },
+
+    {
+        name:"Azzaro The Most Wanted Intense",
+        brand:"Azzaro",
+        category:"designer",
+        size:"100 ml",
+        price:2000,
+        referencePrice:2890,
+        image:"imagenes/azzaro-the-most-wanted-intense.jpg"
+    },
+
+    {
+        name:"Scandal Absolu",
+        brand:"Jean Paul Gaultier",
+        category:"designer",
+        size:"100 ml",
+        price:2650,
+        referencePrice:4270,
+        image:"imagenes/scandal-absolu.jpg"
+    },
+
+    {
+        name:"Invictus Victory Extreme",
+        brand:"Rabanne",
+        category:"designer",
+        size:"200 ml",
+        price:3000,
+        referencePrice:4450,
+        image:"imagenes/invictus-victory-extreme.jpg"
+    },
+
+    {
+        name:"Bad Boy Cobalt",
+        brand:"Carolina Herrera",
+        category:"designer",
+        size:"100 ml",
+        price:2300,
+        referencePrice:3925,
+        image:"imagenes/bad-boy-cobalt.jpg"
+    },
+
+    {
+        name:"Moschino Toy Boy",
+        brand:"Moschino",
+        category:"designer",
+        size:"100 ml",
+        price:1800,
+        referencePrice:2800,
+        image:"imagenes/moschino-toy-boy.jpg"
+    },
+
 
     /* =====================================
        PERFUMES ÁRABES
     ===================================== */
-
-    {
-        name:"9PM",
-        brand:"Afnan",
-        category:"arabic",
-        size:"100 ml",
-        price:700,
-        referencePrice:850,
-        image:"imagenes/9pm.jpg"
-    },
-
-    {
-        name:"9PM Night Out",
-        brand:"Afnan",
-        category:"arabic",
-        size:"100 ml",
-        price:1099,
-        referencePrice:1200,
-        image:"imagenes/9pm-night-out.jpg"
-    },
-
-    {
-        name:"9PM Elixir",
-        brand:"Afnan",
-        category:"arabic",
-        size:"100 ml",
-        price:699,
-        referencePrice:1000,
-        image:"imagenes/9pm-elixir.jpg"
-    },
-
-
-    /* ARMAF */
 
     {
         name:"Odyssey Mandarin Sky",
@@ -824,9 +1114,6 @@ const products = [
         referencePrice:900,
         image:"imagenes/odyssey-mega.jpg"
     },
-
-
-    /* RASASI */
 
     {
         name:"Hawas Ice",
@@ -866,42 +1153,9 @@ const products = [
         price:849,
         referencePrice:1200,
         image:"imagenes/hawas-kobra.jpg"
-    },
-
-
-    /* LATTAFA KHAMRAH */
-
-    {
-        name:"Khamrah Original",
-        brand:"Lattafa",
-        category:"arabic",
-        size:"100 ml",
-        price:549,
-        referencePrice:700,
-        image:"imagenes/khamrah-original.jpg"
-    },
-
-    {
-        name:"Khamrah Qahwa",
-        brand:"Lattafa",
-        category:"arabic",
-        size:"100 ml",
-        price:649,
-        referencePrice:956,
-        image:"imagenes/khamrah-qahwa.jpg"
-    },
-
-    {
-        name:"Khamrah Dukhan",
-        brand:"Lattafa",
-        category:"arabic",
-        size:"100 ml",
-        price:649,
-        referencePrice:963,
-        image:"imagenes/khamrah-dukhan.jpg"
     }
 
-];
+]
 
 
 /* =========================================
@@ -1287,7 +1541,7 @@ function contactWhatsApp(){
     const phone = "523312691042";
 
     let message =
-        "Hola, me interesa realizar una compra en E&I PARFUM.%0A%0A";
+        "Hola, me interesa realizar una compra en E&I FRAGANCE.%0A%0A";
 
     if(cart.length > 0){
 
